@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://otmkfulju2rr"]
+
+[ext_resource type="Script" uid="uid://coo11v4qt1o5k" path="res://main_game.gd" id="1_dugkq"]
+[ext_resource type="PackedScene" uid="uid://diw10lqagmxyt" path="res://streamer_log.tscn" id="1_yx7mw"]
+[ext_resource type="Script" uid="uid://b4bq3r64mw66" path="res://simulation_manager.gd" id="2_ykeeq"]
+[ext_resource type="PackedScene" uid="uid://ddeiv71qj7crb" path="res://machine_card.tscn" id="4_dugkq"]
+
+[node name="MainGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dugkq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="GridContainer" type="GridContainer" parent="HBoxContainer/AspectRatioContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="StreamerLog" parent="HBoxContainer" instance=ExtResource("1_yx7mw")]
+layout_mode = 2
+
+[node name="SimulationManager" type="Node" parent="."]
+script = ExtResource("2_ykeeq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HandContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -159.0
+offset_right = 554.0
+grow_vertical = 0
+
+[node name="MachineCardDrill" parent="CanvasLayer/HandContainer" instance=ExtResource("4_dugkq")]
+layout_mode = 2
+
+[node name="MachineCardSmelter" parent="CanvasLayer/HandContainer" instance=ExtResource("4_dugkq")]
+layout_mode = 2
+machine_type = "Smelter"
+
+[node name="MachineCardExporter" parent="CanvasLayer/HandContainer" instance=ExtResource("4_dugkq")]
+layout_mode = 2
+machine_type = "Exporter"
+
+[node name="RunButton" type="Button" parent="CanvasLayer"]
+offset_left = 588.0
+offset_top = 1154.0
+offset_right = 689.0
+offset_bottom = 1224.0
+text = "RUN"
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 27.0
+offset_top = 43.0
+offset_right = 88.0
+offset_bottom = 66.0
+text = "Score: 0"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddeiv71qj7crb"]
+
+[ext_resource type="Script" uid="uid://bwexxvjosgh2c" path="res://machine_card.gd" id="1_igioi"]
+
+[node name="MachineCard" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_igioi")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(100, 140)
+layout_mode = 2
+text = "Drill"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
